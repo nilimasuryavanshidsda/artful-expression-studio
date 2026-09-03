@@ -1,24 +1,58 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/site/Navbar";
+import { Hero } from "@/components/site/Hero";
+import { About } from "@/components/site/About";
+import { Programs } from "@/components/site/Programs";
+import { ArtForms } from "@/components/site/ArtForms";
+import { AgePrograms } from "@/components/site/AgePrograms";
+import { Calligraphy } from "@/components/site/Calligraphy";
+import { WhyChooseUs } from "@/components/site/WhyChooseUs";
+import { Gallery } from "@/components/site/Gallery";
+import { Workshops } from "@/components/site/Workshops";
+import { Testimonials } from "@/components/site/Testimonials";
+import { CTABanner } from "@/components/site/CTABanner";
+import { Contact } from "@/components/site/Contact";
+import { Footer } from "@/components/site/Footer";
+import { BackToTop } from "@/components/site/BackToTop";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const TITLE = "TVASTRA Art Studio | Art Classes, Workshops & Creative Learning";
+const DESCRIPTION =
+  "TVASTRA Art Studio offers creative art classes, workshops, calligraphy, handwriting improvement, and artistic learning programs for kids, teens, and adults.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Programs />
+        <ArtForms />
+        <AgePrograms />
+        <Calligraphy />
+        <WhyChooseUs />
+        <Gallery />
+        <Workshops />
+        <Testimonials />
+        <CTABanner />
+        <Contact />
+      </main>
+      <Footer />
+      <BackToTop />
+    </>
   );
 }
